@@ -30,13 +30,10 @@ The development has been typechecked with both of the following setups:
 | **2.8.0**   | **v0.9**          |
 | 2.6.4.3     | v0.7              |
 
-No other libraries are needed. The Agda standard library is **not** used.
-
-All modules use the `--guardedness` flag. cubical v0.9 is compiled with it,
-and Agda only lets a module import a `--guardedness` module if it uses the
-flag too. Under cubical v0.7 the flag does nothing. Also under v0.7, Agda
-warns that `BinaryRelation` doesn't export `isTotal` (`Prelude.agda`, line
-50); this warning is harmless.
+All modules use the `--guardedness` flag. cubical v0.9 is compiled with it;
+under cubical v0.7 the flag does nothing. Also under v0.7, Agda warns that
+`BinaryRelation` doesn't export `isTotal` (`Prelude.agda`, line 50); this
+warning is harmless.
 
 ### Installing Agda
 
@@ -118,27 +115,6 @@ the result                                                   │
                                                  Examples.Voevodsky, Examples.Mug
 ```
 
-1. **Realisation** (`CType1`, `CType2`). A `CType¹` is a type of vertices
-   together with a type family of edges. Its realisation `∣_∣` is a higher
-   inductive type with a point for every vertex and a path for every edge.
-   `CType²` adds squares, which the realisation turns into `Square`s.
-   `CType2.noSq` says that a `CType²` without squares has the same realisation
-   as its underlying `CType¹`. This is the lemma that lets dimension 2 hand
-   over to dimension 1.
-2. **Matchings and Morse theorems.** `GraphMatching` defines graphs, gradient
-   paths and acyclic Morse matchings. `GraphMorse` proves the Morse theorem
-   for graphs. `ComplexMatching` defines complexes and 2-full matchings.
-   `ComplexMorse` proves the Morse theorem for complexes: it first cancels
-   every square against the edge it is matched with, then applies `noSq`,
-   and then the Morse theorem for graphs.
-3. **Reading off the result** (`GraphForest`, `GraphBouquet`). A Morse reduct
-   is still a graph. These two lemmas collapse a forest to its set of roots,
-   and a graph with a spanning tree to a bouquet of circles.
-
-The **image application** (`ImageComplex` → `ImageMatching` → `ImageMorse`)
-builds the cubical complex of a bitmap (a `List String`, with `#` for black),
-gives a 2-full matching for *every* bitmap, and makes the Morse reduct of a
-*concrete* bitmap computable, so that its homotopy type can be read off.
 
 ### Modules
 
